@@ -3,11 +3,13 @@ package jpa.ficheIncident.dao;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
@@ -50,7 +52,11 @@ public class FicheIncident implements Serializable {
 	@Column(name = "date_Reprise")
 	private Date dateReprise;
 
+	@ManyToOne(cascade = { CascadeType.PERSIST , CascadeType.MERGE })
+	private AgentDeclarant agentDeclarant;
 	
+	@ManyToOne
+	private Vehicule vehicule;
 
 	public Long getId() {
 		return id;
@@ -112,6 +118,20 @@ public class FicheIncident implements Serializable {
 	}
 	public void setDateReprise(Date dateReprise) {
 		this.dateReprise = dateReprise;
+	}
+	
+	public AgentDeclarant getAgentDeclarant() {
+		return agentDeclarant;
+	}
+	public void setAgentDeclarant(AgentDeclarant agentDeclarant) {
+		this.agentDeclarant = agentDeclarant;
+	}
+	
+	public Vehicule getVehicule() {
+		return vehicule;
+	}
+	public void setVehicule(Vehicule vehicule) {
+		this.vehicule = vehicule;
 	}
 	
 	

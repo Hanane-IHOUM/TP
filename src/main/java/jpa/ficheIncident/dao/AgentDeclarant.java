@@ -1,13 +1,14 @@
 package jpa.ficheIncident.dao;
 
 import java.io.Serializable;
-
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -30,7 +31,9 @@ public class AgentDeclarant implements Serializable {
 	@Column(name = "prenom", nullable = false)
 	private String prenom;
 	
-
+	@OneToMany(targetEntity = FicheIncident.class, mappedBy = "agentDeclarant")
+	private List<FicheIncident> fichesIncidentsDeclarees;
+	
 	
 	public Long getId() {
 		return id;
@@ -58,5 +61,11 @@ public class AgentDeclarant implements Serializable {
 		this.prenom = prenom;
 	}
 	
+	public List<FicheIncident> getFichesIncidentsDeclarees() {
+		return fichesIncidentsDeclarees;
+	}
+	public void setFichesIncidentsDeclarees(List<FicheIncident> fichesIncidentsDeclarees) {
+		this.fichesIncidentsDeclarees = fichesIncidentsDeclarees;
+	}
 	
 }

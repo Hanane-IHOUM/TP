@@ -2,20 +2,20 @@ package jpa.ficheIncident.dao;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
 
-/**
-* A Vehicule.
-*/
 @Entity
 @Table(name = "Vehicule")
 
@@ -35,6 +35,10 @@ public class Vehicule implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateMiseEnCirculation")
 	private Date dateMiseEnCirculation;
+	
+	@ManyToMany(targetEntity = Chauffeur.class)
+	@JoinTable(name = "vehicules_chauffeurs")
+	private List<Chauffeur> chauffeurs;
 	
 	
 	public Long getId() {
@@ -58,8 +62,18 @@ public class Vehicule implements Serializable {
 	public Date getDateMiseEnCirculation() {
 		return dateMiseEnCirculation;
 	}
-	public void setDateMiseEnCirculation(Date dateMiseEncirculation) {
+	public void setDateMiseEnCirculation(Date dateMiseEnCirculation) {
 		this.dateMiseEnCirculation = dateMiseEnCirculation;
 	}
+	
+	public List<Chauffeur> getChauffeurs() {
+		return chauffeurs;
+	}
+	public void setChauffeurs(List<Chauffeur> chauffeurs) {
+		this.chauffeurs = chauffeurs;
+	}
+	
+	
+	
 	
 }

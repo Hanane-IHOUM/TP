@@ -1,9 +1,13 @@
 package jpa.ficheIncident;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jpa.ficheIncident.dao.Chauffeur;
+import jpa.ficheIncident.dao.ChauffeurDao;
+import jpa.ficheIncident.dao.ChauffeurDaoFactory;
 import jpa.ficheIncident.dao.Vehicule;
 import jpa.ficheIncident.dao.VehiculeDao;
 import jpa.ficheIncident.dao.VehiculeDaoFactory;
@@ -11,14 +15,49 @@ import jpa.ficheIncident.dao.VehiculeDaoFactory;
 public class TestJpaVehiculeDao {
 
 	public static void main(String[] args) {
-		TestJpaVehiculeDao.testerVehicule(VehiculeDaoFactory.JPA_DAO);
+		TestJpaVehiculeDao.testerCrudVehiculeChauffeur(VehiculeDaoFactory.JPA_DAO);
 	}
-
 	
+	
+	private static void testerCrudVehiculeChauffeur(String typeDao) {
+		try {
+		/*
+			VehiculeDao vehiculeDao = VehiculeDaoFactory.getVehiculeDao(typeDao);
+			ChauffeurDao chauffeurDao = ChauffeurDaoFactory.getChauffeurDao(typeDao);
+		
+			long id1 = 1;
+			long id2 = 2;
+		
+			List<Chauffeur> listeChauffeurs = new ArrayList<>();
+		
+			listeChauffeurs.add(chauffeurDao.rechercherChauffeurParId(id1));
+			listeChauffeurs.add(chauffeurDao.rechercherChauffeurParId(id2));
+		
+			Vehicule veh3 = new Vehicule();
+			veh3.setCodeInterne("veh7");
+			veh3.setImmatriculation("KK-LL-CC");
+			veh3.setChauffeurs(listeChauffeurs);
+		
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MMdd");
+			Date utildate = simpleDateFormat.parse("2016-07-09");
+			veh3.setDateMiseEnCirculation(utildate);
+		
+			vehiculeDao.insererVehicule(veh3);
+		*/
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+
+	/*
 	private static void testerVehicule(String typeDao) {
 		try {
 			
-			/*
+			
 			VehiculeDao vehiculeDao = VehiculeDaoFactory.getVehiculeDao(typeDao);
 
 			vehiculeDao.insererVehicule("veh1", "12-H-38779", "2018-10-24");
@@ -48,17 +87,13 @@ public class TestJpaVehiculeDao {
 									+ ", immat:" + vehicule.getImmatriculation() + ", dateMEC:"
 									+ (vehicule.getDateMiseEnCirculation()));
 			}
-			
-			*/
-			
-			
-			
 		
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	*/
 
 }
 
